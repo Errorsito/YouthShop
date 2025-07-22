@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editar Catálogo - YouthShop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>✏️ Editor de Productos</h1>
+  <div id="editor-productos"></div>
+
+  <button onclick="guardarCambios()">💾 Guardar Cambios</button>
+
+  <script src="script.js"></script>
+  <script>
+    const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
+    if (!usuarioActual || usuarioActual.usuario !== "liderYouthShop" || usuarioActual.contraseña !== "092724123") {
+      alert("Acceso denegado");
+      window.location.href = "index.html";
+    }
+
+    mostrarEditor();
+  </script>
+</body>
+</html>

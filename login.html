@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión - YouthShop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="fondo-oscuro">
+  <div class="encabezado-formulario">
+    <img src="image/icono.jpeg" alt="Logo YouthShop">
+    <h1>YouthShop</h1>
+    <p>Tu tienda urbana favorita 💥</p>
+  </div>
+    <form class="formulario" onsubmit="return iniciarSesion()">
+      <h2>Iniciar Sesión</h2>
+      <input type="text" id="usuario" placeholder="Usuario" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+      <p style="margin-top: 15px;">
+        ¿No tienes cuenta?
+        <a href="registro.html" style="color: #00bcd4; font-weight: bold;">Regístrate aquí</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    function iniciarSesion() {
+      const usuario = document.getElementById("usuario").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Verifica si es el administrador
+      if (usuario === "liderYouthShop" && password === "092724123") {
+        localStorage.setItem("usuarioActual", JSON.stringify({ usuario, tipo: "admin" }));
+        window.location.href = "index.html";
+        return false;
+      }
+
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      const usuarioEncontrado = usuarios.find(u => u.usuario === usuario && u.password === password);
+
+      if (usuarioEncontrado) {
+        localStorage.setItem("usuarioActual", JSON.stringify(usuarioEncontrado));
+        window.location.href = "index.html";
+      } else {
+        alert("Usuario o contraseña incorrectos.");
+      }
+
+      return false;
+    }
+  </script>
+</body>
+</html>

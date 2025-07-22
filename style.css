@@ -1,0 +1,410 @@
+/* --- ESTILOS GENERALES --- */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f0f0f;
+  color: #f4f4f4;
+  /* Centrar todo el contenido principal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Fondo de portada para header */
+header {
+  background-image: url('image/portada.jpeg');
+  background-size: cover;
+  background-position: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/* Oscurecer imagen de fondo para mejor lectura */
+header::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+/* Contenedor principal para catalogo */
+main {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+/* Catalogo con grid responsive */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* Producto */
+.producto {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.producto img {
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Estado producto */
+.estado {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.disponible {
+  background-color: #4caf50;
+  color: white;
+}
+
+.agotado {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Carrito */
+.carrito {
+  background: #1e1e1e;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.carrito h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+#lista-carrito {
+  list-style: none;
+  padding-left: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#lista-carrito li {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Botones generales */
+button {
+  margin-top: 0.5rem;
+  background-color: #4caf50;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Botón finalizar compra */
+.finalizar-container {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#finalizar {
+  background-color: #0099ff;
+  color: white;
+  padding: 8px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#finalizar:hover {
+  background-color: #007acc;
+}
+/* Barra de usuario */
+.portada {
+  background-color: #1c1c1c;
+  padding: 2rem 1rem;
+  color: white;
+  text-shadow: 1px 1px 2px #000;
+  text-align: center;
+  border-bottom: 3px solid #f7f7f7;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.portada h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.barra-usuario {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  backdrop-filter: blur(3px);
+  border-radius: 0 0 10px 10px;
+}
+
+.barra-usuario button {
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.barra-usuario button:hover {
+  background: #c62828;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #121212;
+  color: #ccc;
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  margin-top: auto;
+}
+
+/* Mensajes flotantes */
+.mensaje-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000080;
+  z-index: 999;
+  animation: aparecer 0.3s ease-in-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* --- ESTILOS LOGIN / REGISTRO --- */
+
+.fondo-oscuro {
+  background-color: rgb(0, 0, 0, 0.6);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  background: rgb(0, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px #00ffff;
+  max-width: 320px;
+  width: 90%;
+  color: white;
+}
+
+form h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+form input,
+form select {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background: #00bcd4;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #0097a7;
+}
+
+.encabezado-formulario {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.encabezado-formulario img {
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 10px #000;
+}
+
+.encabezado-formulario h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.encabezado-formulario p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Contenedor y formulario para login (opcional si usas) */
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.formulario {
+  background-color: #84bdbd;
+  padding: 25px 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgb(0, 251, 255,0.1);
+  width: 300px;
+  text-align: center;
+  color: #000;
+}
+
+.formulario h2 {
+  margin-bottom: 20px;
+  color: #00ffff;
+}
+
+.formulario input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.formulario button {
+  background-color: #62b2b2;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.formulario button:hover {
+  background-color: #cc001f;
+}
+
+/* actualizacion de los carritos */
+.acciones-superiores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+footer .contacto {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #000000;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+footer .contacto h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}

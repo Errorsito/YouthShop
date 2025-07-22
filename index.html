@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouthShop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <script>
+    const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"));
+    if (!usuarioActual) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <div class="portada">
+    <h2>¡Bienvenido a YouthShop, <span id="nombre-usuario"></span>!</h2>
+    <div class="barra-usuario">
+      <span>Sesión activa</span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <header>
+    <h1 class="logo">YouthShop</h1>
+    <div class="acciones-superiores">
+      <div id="carrito" class="carrito">
+        <h2>🛒 Carrito (0)</h2>
+        <ul id="lista-carrito"></ul>
+      </div>
+      <button id="finalizar" onclick="finalizarCompra()">😎 lo mejor para ti</button>
+      <!-- Botón de admin solo visible para administradores -->
+      <button id="boton-editar" style="display: none;" onclick="window.location.href='editar.html'">✏️ Editar Catálogo</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="catalogo">
+      <!-- Productos -->
+      <!-- (Todo igual que ya lo tienes) -->
+      <div class="producto">
+        <img src="image/icono.jpeg" alt="Producto 1" />
+        <h2><strong>Camiseta Urbana</strong></h2>
+        <p>$19.99</p>
+        <span class="estado disponible">Disponible</span>
+        <button onclick="agregarAlCarrito('Camiseta Urbana', 19.99)">Agregar al carrito</button>
+      </div>
+
+      <!-- (los demás productos igual que los tuyos) -->
+      <div class="producto">
+        <img src="image/portada.jpeg" alt="Producto 2" />
+        <h2>Chaqueta Negra</h2>
+        <p>$34.99</p>
+        <span class="estado agotado">Agotado</span>
+      </div>
+
+      <div class="producto">
+        <img src="image/icono.jpeg" alt="Producto 3" />
+        <h2>Diskepantalon xd</h2>
+        <p>$34.99</p>
+        <span class="estado disponible">Disponible</span>
+        <button onclick="agregarAlCarrito('Diskepantalon xd', 34.99)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="image/portada.jpeg" alt="Producto 4" />
+        <h2>Nose qué poner xd</h2>
+        <p>$34.99</p>
+        <span class="estado agotado">Agotado</span>
+      </div>
+
+      <div class="producto">
+        <img src="image/icono.jpeg" alt="Producto 5" />
+        <h2>Camiseta de Mickey xd</h2>
+        <p>$19.99</p>
+        <span class="estado disponible">Disponible</span>
+        <button onclick="agregarAlCarrito('Camiseta de Mickey xd', 19.99)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="image/portada.jpeg" alt="Producto 6" />
+        <h2>Chaqueta de Jesús disk</h2>
+        <p>$34.99</p>
+        <span class="estado agotado">Agotado</span>
+      </div>
+
+      <div class="producto">
+        <img src="image/icono.jpeg" alt="Producto 7" />
+        <h2>Es una prueba obvio</h2>
+        <p>$34.99</p>
+        <span class="estado disponible">Disponible</span>
+        <button onclick="agregarAlCarrito('Es una prueba obvio', 34.99)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="image/portada.jpeg" alt="Producto 8" />
+        <h2>Imagina que hay ropa xd</h2>
+        <p>$34.99</p>
+        <span class="estado agotado">Agotado</span>
+      </div>
+    </section>
+    <!-- Botón al final -->
+    <div class="finalizar-container">
+      <button id="finalizar" onclick="finalizarCompra()">✅ Finalizar compra</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Síguenos en <a href="https://instagram.com" target="_blank">@YouthShop</a></p>
+    <div class="contacto">
+      <h3>📣 Biografía o cualquier duda contáctanos aquí</h3>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Mostrar nombre del usuario
+    document.getElementById("nombre-usuario").textContent = usuarioActual.usuario;
+
+    // Verificar si es admin
+    if (usuarioActual.usuario === "liderYouthShop") {
+      document.getElementById("boton-editar").style.display = "inline-block";
+    }
+
+    // Cerrar sesión
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActual");
+      window.location.href = "login.html";
+    }
+  </script>
+  
+  <script src="auth.js"></script>
+  <!-- Botón de admin solo visible para administradores -->
+  <script>
+  if 
+  (usuarioActual.usuario === "liderYouthShop" && usuarioActual.contraseña === "092724123") {
+    const botonEditar = document.createElement("a");
+    botonEditar.href = "editar.html";
+    botonEditar.id = "boton-editar";
+    botonEditar.textContent = "✏️ Editar catálogo";
+    botonEditar.className = "boton-editar";
+    document.querySelector("header").appendChild(botonEditar);
+  }
+    </script>
+
+</body>
+</html>
